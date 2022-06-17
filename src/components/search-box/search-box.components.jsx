@@ -1,4 +1,5 @@
 import { Component } from "react";
+import './search-box.styles.css';
 
 class SearchBox extends Component{
 
@@ -6,7 +7,7 @@ class SearchBox extends Component{
 
 		return(
 			<input 
-			className='text-box'
+			className={`search-box ${this.props.className}`}
 			placeholder="search monsters"
 			type="search" 
 		//the funcion is outside the render, because if it is inside each time we use it have to re upload, will do the app slower
