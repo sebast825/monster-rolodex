@@ -52,7 +52,7 @@ onSearchChange = (e)=>{
       return (
         
       <div className="App">
-        {/* 47 min 5 corregir bug in progress */}
+        {/* 48 completed*/}
       
       <SearchBox onChangeHandler={onSearchChange} />
 
