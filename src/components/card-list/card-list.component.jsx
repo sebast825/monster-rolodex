@@ -6,9 +6,16 @@ class CardList extends Component{
 		console.log(monsters)
 		return(
 			<div>
-			{monsters.map((monster)=>{					
-				return	(<h1 key={monster.id}>{monster.name}</h1>)
-				})
+			{monsters.map((monster)=>(				
+				<div class="card-container" key={monster.id}>
+					<img
+						alt={`monster ${monster.name}`}
+						src={`https://robohash.org/${monster.id}?set=set2`}
+					/>
+					<h2>{monster.name}</h2>
+					<p>{monster.email} </p>
+				</div>	
+			))
 			}
 			</div>
 		);		
