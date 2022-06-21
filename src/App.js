@@ -1,74 +1,105 @@
 import logo from './logo.svg';
 import './App.css';
-import { Component } from 'react';
+import { useState } from 'react';
  import CardList from './components/card-list/card-list.component';
  import SearchBox from './components/search-box/search-box.components';
 
+const App = () =>{
 
-class App extends Component {
- 
-  constructor(){
-    super();
-    this.state = {
-      monsters: [],
-      //here is the key word
-      searchField:'',
-      };
+  const [searchField, setsearchField] = useState(""); //[value,setValue]
+
+  const onSearchChange = (e)=>{
+    // console.log(e.target.value);
+    const searchFields = e.target.value.toLowerCase()
+  //modify this.state, this will do update the render so will look reflected in FE
+  setsearchField({searchFields})
   }
-//the first time a component renders works the function componentDidMount
-//that means it will activate each time the co,´pnent is puted in the DOM
-componentDidMount(){
-  fetch('https://jsonplaceholder.typicode.com/users')
-    .then((response)=> response.json())
-    .then((users)=>
-     this.setState(      
-      ()=>{
-        return {monsters: users};
-      }
-    ));
+
+  console.log(searchField);
+  return (
+   
+    <div className="App">
+           <h1 class="app-title">Monster Roledex</h1>
+      {/* 48 completed*/}
+    
+    <SearchBox onChangeHandler={onSearchChange}/>
+
+
+
+    {/* <CardList monsters={filteredMonsters} />  */}
+
+
+
+    
+    
+    </div>
+  );
 }
 
-onSearchChange = (e)=>{
-  // console.log(e.target.value);
-  const searchField = e.target.value.toLowerCase()
-//modify this.state, this will do update the render so will look reflected in FE
+// class App extends Component {
+ 
+//   constructor(){
+//     super();
+//     this.state = {
+//       monsters: [],
+//       //here is the key word
+//       searchField:'',
+//       };
+//   }
+// //the first time a component renders works the function componentDidMount
+// //that means it will activate each time the co,´pnent is puted in the DOM
+// componentDidMount(){
+//   fetch('https://jsonplaceholder.typicode.com/users')
+//     .then((response)=> response.json())
+//     .then((users)=>
+//      this.setState(      
+//       ()=>{
+//         return {monsters: users};
+//       }
+//     ));
+// }
 
-  this.setState(()=>{
-    return {searchField};
-  })
+// onSearchChange = (e)=>{
+//   // console.log(e.target.value);
+//   const searchField = e.target.value.toLowerCase()
+// //modify this.state, this will do update the render so will look reflected in FE
 
-  console.log(this.state.searchField)
-}
+//   this.setState(()=>{
+//     return {searchField};
+//   })
 
-  render() {
-    //alow us to don't have to write each tiem this.state and use directly what we need
-    const { monsters, searchField} = this.state;
-     const { onSearchChange} = this;
+//   console.log(this.state.searchField)
+// }
 
-    const filteredMonsters = monsters.filter((monster)=>{
-      return monster.name.toLowerCase().includes(searchField)});
+//   render() {
+//     //alow us to don't have to write each tiem this.state and use directly what we need
+//     const { monsters, searchField} = this.state;
+//      const { onSearchChange} = this;
+
+//     const filteredMonsters = monsters.filter((monster)=>{
+//       return monster.name.toLowerCase().includes(searchField)});
       
    
-      return (
+//       return (
    
-      <div className="App">
-             <h1 class="app-title">Monster Roledex</h1>
-        {/* 48 completed*/}
+//       <div className="App">
+//              <h1 class="app-title">Monster Roledex</h1>
+//         {/* 48 completed*/}
       
-      <SearchBox onChangeHandler={onSearchChange} />
+//       <SearchBox onChangeHandler={onSearchChange} />
 
 
 
-      <CardList monsters={filteredMonsters} />
+//       <CardList monsters={filteredMonsters} />
 
 
 
 			
 			
-      </div>
-    );
-  } 
- } 
+//       </div>
+//     );
+//   } 
+//  } 
 
 export default App;
 
