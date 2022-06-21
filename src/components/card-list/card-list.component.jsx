@@ -22,6 +22,7 @@ class CardList extends Component{
 			</div>
 		);		
 	}
+	// desde desktop
 }
 
 export default CardList;

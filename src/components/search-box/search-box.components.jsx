@@ -16,6 +16,7 @@ class SearchBox extends Component{
 			  />
 		)
 	}
+	// asdsad
 }
 
 export default SearchBox;
