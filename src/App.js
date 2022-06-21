@@ -1,37 +1,39 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
  import CardList from './components/card-list/card-list.component';
  import SearchBox from './components/search-box/search-box.components';
 
 const App = () =>{
-
+ 
   const [searchField, setsearchField] = useState(""); //[value,setValue]
+  const [monsters, setMonsters] = useState([]);
+  
+  useEffect(()=>{
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then((response)=> response.json())
+      .then((users)=> setMonsters(users));
+  },[]);
+  
+
+   const filteredMonsters = monsters.filter((monster)=>{
+           return monster.name.toLowerCase().includes(searchField)});
 
   const onSearchChange = (e)=>{
-    // console.log(e.target.value);
-    const searchFields = e.target.value.toLowerCase()
-  //modify this.state, this will do update the render so will look reflected in FE
-  setsearchField({searchFields})
+    const searchFields = e.target.value.toLowerCase() 
+    setsearchField(searchFields)
   }
+  
 
-  console.log(searchField);
   return (
    
     <div className="App">
            <h1 class="app-title">Monster Roledex</h1>
       {/* 48 completed*/}
     
-    <SearchBox onChangeHandler={onSearchChange}/>
+    <SearchBox onChangeHandler={onSearchChange}/>{}
 
-
-
-    {/* <CardList monsters={filteredMonsters} />  */}
-
-
-
-    
-    
+    { <CardList monsters={filteredMonsters} />  }
     </div>
   );
 }
@@ -39,10 +41,10 @@ const App = () =>{
 // class App extends Component {
  
 //   constructor(){
-//     super();
-//     this.state = {
-//       monsters: [],
-//       //here is the key word
+    // super();
+    // this.state = {
+    //   monsters: [],
+      //here is the key word
 //       searchField:'',
 //       };
 //   }
