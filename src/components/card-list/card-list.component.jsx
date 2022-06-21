@@ -4,11 +4,11 @@ import Card from "../card/card.component";
 class CardList extends Component{
 	render(){		
 		const {monsters} = this.props;
-		// console.log(monster)	
+		//  console.log(monsters)	
 		return(
 			<div class="card-list">
 			{monsters.map((monster)=>{
-				const {name,id,email} = monster;
+			
 				return(	
 							
 					<Card monster={monster}></Card>

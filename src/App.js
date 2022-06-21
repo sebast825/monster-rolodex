@@ -50,8 +50,9 @@ onSearchChange = (e)=>{
       
    
       return (
-        
+   
       <div className="App">
+             <h1 class="app-title">Monster Roledex</h1>
         {/* 48 completed*/}
       
       <SearchBox onChangeHandler={onSearchChange} />
