@@ -24,16 +24,15 @@ const App = () =>{
     setsearchField(searchFields)
   }
   
-
   return (
    
     <div className="App">
            <h1 class="app-title">Monster Roledex</h1>
       {/* 48 completed*/}
     
-    <SearchBox onChangeHandler={onSearchChange}/>{}
+    <SearchBox onChangeHandler={onSearchChange}/>
 
-    { <CardList monsters={filteredMonsters} />  }
+     <CardList monsters={filteredMonsters} />  
     </div>
   );
 }
