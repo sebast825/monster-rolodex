@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
  import SearchBox from './components/search-box/search-box.components';
 
 const App = () =>{
- 
+//  started 68
   const [searchField, setsearchField] = useState(""); //[value,setValue]
   const [monsters, setMonsters] = useState([]);
   
@@ -15,7 +15,7 @@ const App = () =>{
       .then((users)=> setMonsters(users));
   },[]);
   
-
+  console.log("atr")
    const filteredMonsters = monsters.filter((monster)=>{
            return monster.name.toLowerCase().includes(searchField)});
 
